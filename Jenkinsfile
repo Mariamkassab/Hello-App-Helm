@@ -32,7 +32,7 @@ pipeline {
                                 mv helm_app/deploy.yaml helm_app/deploy.yaml.tmp
                                 cat helm_app/deploy.yaml.tmp | envsubst > helm_app/deploy.yaml
                                 rm -f helm_app/deploy.yaml.tmp
-                                Helm install app ./helm_app --values ${BRANCH_NAME}-values.yml --kubeconfig ${KUBECONFIG_ITI} --kubeconfig ${KUBECONFIG_ITI} -n ${BRANCH_NAME}
+                                Helm install app ./helm_app --values ./helm_app/${BRANCH_NAME}-values.yaml --kubeconfig ${KUBECONFIG_ITI} -n ${BRANCH_NAME}
                              '''
                         }
                     }
