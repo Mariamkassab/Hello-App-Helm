@@ -1,0 +1,19 @@
+metadata:
+  name: helloapp
+  rep: 1
+
+containers:
+  - image: mariamkasssab/iti_project:v${BUILD_NUMBER}
+    name: helloapp
+    imagePullPolicy: Always
+    containerPort: 5000
+
+service:
+  name: myservice
+
+
+ports:
+  name: helloport
+  port: 5000
+  protocol: TCP
+  targetPort: 5000
