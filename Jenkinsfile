@@ -29,10 +29,10 @@ pipeline {
                         withCredentials([file(credentialsId: 'mariam-kubeconfig', variable: 'KUBECONFIG_ITI')]) {
                             sh '''
                                 export BUILD_NUMBER=$(cat ../build.txt)
-                                mv Deployment/deploy.yaml Deployment/deploy.yaml.tmp
-                                cat Deployment/deploy.yaml.tmp | envsubst > Deployment/deploy.yaml
-                                rm -f Deployment/deploy.yaml.tmp
-                                Helm install app ./Deployment --values ${BRANCH_NAME}-values.yml --kubeconfig ${KUBECONFIG_ITI} --kubeconfig ${KUBECONFIG_ITI} -n ${BRANCH_NAME}
+                                mv helm_app/deploy.yaml helm_app/deploy.yaml.tmp
+                                cat helm_app/deploy.yaml.tmp | envsubst > helm_app/deploy.yaml
+                                rm -f helm_app/deploy.yaml.tmp
+                                Helm install app ./helm_app --values ${BRANCH_NAME}-values.yml --kubeconfig ${KUBECONFIG_ITI} --kubeconfig ${KUBECONFIG_ITI} -n ${BRANCH_NAME}
                              '''
                         }
                     }
