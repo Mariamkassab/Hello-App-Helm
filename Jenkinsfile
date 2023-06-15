@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'jenkins-slave' }
+    agent any //{ label 'jenkins-slave' }
     stages {
         stage('build') {
             steps {
